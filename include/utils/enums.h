@@ -1,6 +1,11 @@
 #ifndef ENUMS_H
 #define ENUMS_H
 
+enum class OperationType{
+    READ,
+    WRITE
+};
+
 enum class TransactionState {
     ACTIVE,
     COMMITTED,
