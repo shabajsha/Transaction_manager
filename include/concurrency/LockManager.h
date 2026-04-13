@@ -5,6 +5,7 @@
 #include <set>
 #include <memory>
 #include <vector>
+#include <queue>
 #include <cstdint>
 #include "../utils/enums.h"
 #include "Lock.h"
@@ -28,8 +29,9 @@ public:
     
 private:
     // resource_id -> set of locks held on that resource
-  std::map<uint32_t, std::vector<std::shared_ptr<Lock>>> resource_locks_;
-
+    std::map<uint32_t, std::vector<std::shared_ptr<Lock>>> resource_locks_;
+    // resource_id -> queue of (transaction_id, requested_lock_type)
+    std::map<uint32_t, std::queue<std::pair<uint32_t, LockType>>> waiting_queue_;
     // Check compatibility between existing and requested lock
     bool isCompatible(LockType existing, LockType requested) const;
 };
