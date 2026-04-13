@@ -27,11 +27,8 @@
 class DataStore
 {
 public:
-
-    void insertRecord(Operation Op);
-    void deleteRecord(Operation Op);
-    void updateRecord(Operation Op);
-    void displayRecord(Operation Op);
+    int read(std::string key);
+    void write(std::string key);
     void actions(Operation Op);
 
 private:

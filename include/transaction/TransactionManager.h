@@ -7,6 +7,7 @@
 #include <string>
 #include "Transaction.h"
 
+
 class TransactionManager {
 public:
     TransactionManager();
@@ -17,9 +18,7 @@ public:
     void abortTransaction(uint32_t transaction_id);
     
     std::shared_ptr<Transaction> getTransaction(uint32_t transaction_id) const;
-    bool parseTransactionLine(const std::string& line,
-                              std::shared_ptr<Transaction>& out,
-                              std::string& err) const;
+    bool parseTransactionLine(const std::string& line,std::shared_ptr<Transaction>& out, std::string& err);
     
 private:
     static std::string trim(const std::string& value);

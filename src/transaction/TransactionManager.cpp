@@ -14,16 +14,16 @@ std::string trim(std::string value){
     return value.substr(l, r - l + 1);
 }
 
-bool parseTransactionLine(const std::string& line,std::shared_ptr<Transaction>& out, std::string& err){
+bool TransactionManager::parseTransactionLine(const std::string& line,std::shared_ptr<Transaction>& out, std::string& err){
     // Expected format: "T<transaction_id>: <operation1>, <operation2>, ..."
 
-    int colcon_pos = line.find(':');
-    if(colcon_pos == std::string::npos) {
+    int colon_pos = line.find(':');
+    if(colon_pos == std::string::npos) {
         err = "Invalid transaction line format: missing ':' delimiter";
         return false;
     }
-    std::string trasPart = line.substr(0, colcon_pos);
-    std::string opsPart = line.substr(colcon_pos + 1);
+    std::string trasPart = line.substr(0, colon_pos);
+    std::string opsPart = line.substr(colon_pos + 1);
 
     if(trasPart.empty() || trasPart[0] != 'T') {
         err = "Invalid transaction line format: missing 'T' prefix";
@@ -54,10 +54,6 @@ bool parseTransactionLine(const std::string& line,std::shared_ptr<Transaction>& 
 
     while(std::getline(opsStream, op, ',')){
         op = trim(op);
-        if (opsPart.empty()) {
-            err = "No operations provided";
-            return false;
-        }
         if(op.empty()) {
             err = "Invalid operation format: empty operation";
             return false;
