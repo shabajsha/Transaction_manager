@@ -38,46 +38,13 @@ DataStore::~DataStore()
 //     return false;
 // }
 
-void DataStore::insertRecord(Operation Op)
-{
-    _records[Op.key]= 1;
-}
-void DataStore::displayRecord(Operation Op)
-{
-    if (_records.find(Op.key) != _records.end())
-    {
-        std::cout << _records[Op.key] << std::endl;
-    }
-    else
-    {
-        std::cout << "Record is not available" << std::endl;
-    }
-}
-void DataStore::deleteRecord(Operation Op)
-{
-    _records.erase(Op.key);
-}
-void DataStore::updateRecord(Operation Op)
-{
-    _records[Op.key]++;
+int DataStore::read(std::string key){
+    if (_records.find(key) == _records.end())
+        _records[key] = 0;
+
+    return _records[key];
 }
 
-void DataStore::actions(Operation Op)
-{
-    if (Op.type == 'R')
-    {
-        displayRecord(Op);
-    }
-    else if (Op.type == 'W')
-    {
-        if (_records.find(Op.key) != _records.end())
-        {
-            updateRecord(Op);
-        }
-        else
-        {
-            insertRecord(Op);
-        }
-    }
-
+void DataStore::write(std::string key){
+    _records[key]++;
 }
