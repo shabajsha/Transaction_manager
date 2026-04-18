@@ -21,7 +21,7 @@ public:
     bool parseTransactionLine(const std::string& line,std::shared_ptr<Transaction>& out, std::string& err);
     
 private:
-    static std::string trim(const std::string& value);
+    std::string trim(const std::string& str);
     static bool parseOperationToken(const std::string& token, Operation& op, std::string& err);
 
     std::map<uint32_t, std::shared_ptr<Transaction>> active_transactions_;

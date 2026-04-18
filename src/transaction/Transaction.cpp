@@ -6,8 +6,6 @@ Transaction::Transaction(uint32_t transaction_id)
       start_time_(std::chrono::system_clock::now()) {
 }
 
-Transaction::~Transaction() {
-}
 
 uint32_t Transaction::getTransactionId() const {
     return transaction_id_;

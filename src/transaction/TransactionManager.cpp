@@ -1,5 +1,6 @@
 #include "../../include/transaction/TransactionManager.h"
 #include  <sstream>
+#include <cctype>
 
 TransactionManager::TransactionManager() : next_transaction_id_(1) {
 }
@@ -7,10 +8,12 @@ TransactionManager::TransactionManager() : next_transaction_id_(1) {
 TransactionManager::~TransactionManager() {
 }
 
-std::string trim(std::string value){
+std::string TransactionManager::trim(const std::string& value) {
     int l = 0, r = value.length() - 1;
-    while(l <= r && std::isspace(static_cast<unsigned char>(value[l]))) l++;
-    while(r >= l && std::isspace(static_cast<unsigned char>(value[r]))) r--;
+
+    while (l <= r && std::isspace(static_cast<unsigned char>(value[l]))) l++;
+    while (r >= l && std::isspace(static_cast<unsigned char>(value[r]))) r--;
+
     return value.substr(l, r - l + 1);
 }
 

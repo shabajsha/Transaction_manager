@@ -1,0 +1,26 @@
+# ninja log v7
+18	478	7982364532457278	CMakeFiles/transaction_manager.dir/src/concurrency/Lock.cpp.obj	a6da203d44a3e0ea
+45	1058	7982364532720165	CMakeFiles/transaction_manager.dir/src/storage/Record.cpp.obj	91a69bd7ae67d845
+9	1201	7982364532341518	CMakeFiles/transaction_manager.dir/src/transaction/Transaction.cpp.obj	87260ddea0587006
+32	1286	7982364532587343	CMakeFiles/transaction_manager.dir/src/recovery/LogRecord.cpp.obj	3960e9441dab3268
+59	1309	7982364532856224	test/CMakeFiles/test_transactions.dir/__/src/transaction/Transaction.cpp.obj	bfac939f9e4fdd55
+1063	1359	7982364542937094	test/CMakeFiles/test_deadlock.dir/__/src/concurrency/Lock.cpp.obj	bf03b07c67985df0
+54	1666	7982364532795029	test/CMakeFiles/test_transactions.dir/test_transactions.cpp.obj	d67edde09432301a
+41	1827	7982364532674827	CMakeFiles/transaction_manager.dir/src/recovery/RecoveryManager.cpp.obj	d2cec44c77158d4
+37	1886	7982364532633235	CMakeFiles/transaction_manager.dir/src/recovery/LogManager.cpp.obj	c46ab5784aa63721
+28	1947	7982364532537261	CMakeFiles/transaction_manager.dir/src/concurrency/WaitForGraph.cpp.obj	1e6fbcbc8a9b2669
+4	1998	7982364532297713	CMakeFiles/transaction_manager.dir/src/main.cpp.obj	19f9a65bbb24bf2c
+543	2006	7982364539004981	test/CMakeFiles/test_deadlock.dir/test_deadlock.cpp.obj	81791696d380d63c
+49	2011	7982364532749242	CMakeFiles/transaction_manager.dir/src/storage/DataStore.cpp.obj	2f04485d1c282b7d
+1325	2202	7982364545504479	test/CMakeFiles/test_recovery.dir/__/src/recovery/LogRecord.cpp.obj	dd32de95347ca0bd
+23	2259	7982364532503881	CMakeFiles/transaction_manager.dir/src/concurrency/LockManager.cpp.obj	e9c274e0cc4e9dbb
+63	2369	7982364532896589	test/CMakeFiles/test_transactions.dir/__/src/transaction/TransactionManager.cpp.obj	db59b954ed0f785e
+14	2380	7982364532399500	CMakeFiles/transaction_manager.dir/src/transaction/TransactionManager.cpp.obj	ca6f2ca4f18c972c
+1205	2517	7982364544420851	test/CMakeFiles/test_deadlock.dir/__/src/concurrency/WaitForGraph.cpp.obj	579cacb4e3266869
+2370	2537	7982364555956810	test/test_transactions.exe	21e33bf551cf8a9e
+1360	2583	7982364545861677	test/CMakeFiles/test_recovery.dir/__/src/recovery/LogManager.cpp.obj	63d15b47a1a6a919
+2381	2614	7982364556065450	transaction_manager.exe	83fd99eb71405214
+1291	2637	7982364545261292	test/CMakeFiles/test_recovery.dir/test_recovery.cpp.obj	a41b5bb4a82bb40d
+2517	2686	7982364557426917	test/test_deadlock.exe	18d104681ee062ee
+1669	2840	7982364549025995	test/CMakeFiles/test_recovery.dir/__/src/recovery/RecoveryManager.cpp.obj	2638ccd4d7ec3861
+2840	2975	7982364560676566	test/test_recovery.exe	789aeff18798ae3a

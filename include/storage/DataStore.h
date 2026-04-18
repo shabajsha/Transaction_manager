@@ -6,7 +6,7 @@
 #include <cstdint>
 #include "Record.h"
 #include <unordered_map>
-#include <Transaction.h>
+#include "../transaction/Transaction.h"
 #include <iostream>
 // class DataStore {
 // public:
@@ -27,6 +27,8 @@
 class DataStore
 {
 public:
+    DataStore();
+     ~DataStore();
     int read(std::string key);
     void write(std::string key);
     void actions(Operation Op);

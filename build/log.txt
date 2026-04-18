@@ -1,0 +1,3 @@
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT

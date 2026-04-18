@@ -1,3 +1,10 @@
-/home/sha/Documents/Development/Transaction Manager/Transaction_manager/build/CMakeFiles/main.dir
-/home/sha/Documents/Development/Transaction Manager/Transaction_manager/build/CMakeFiles/edit_cache.dir
-/home/sha/Documents/Development/Transaction Manager/Transaction_manager/build/CMakeFiles/rebuild_cache.dir
+C:/Users/HP/Downloads/Transaction_manager/build/CMakeFiles/transaction_manager.dir
+C:/Users/HP/Downloads/Transaction_manager/build/CMakeFiles/test.dir
+C:/Users/HP/Downloads/Transaction_manager/build/CMakeFiles/edit_cache.dir
+C:/Users/HP/Downloads/Transaction_manager/build/CMakeFiles/rebuild_cache.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/test_transactions.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/test_deadlock.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/test_recovery.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/test.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/edit_cache.dir
+C:/Users/HP/Downloads/Transaction_manager/build/test/CMakeFiles/rebuild_cache.dir

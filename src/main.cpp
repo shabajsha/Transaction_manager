@@ -21,7 +21,7 @@ int main() {
     auto record = std::make_shared<Record>(1);
     std::vector<uint8_t> data = {0x48, 0x65, 0x6C, 0x6C, 0x6F};  // "Hello"
     record->setData(data);
-    data_store.insertRecord(record);
+   // data_store.insertRecord(record);
     std::cout << "Inserted record ID: " << record->getRecordId() << std::endl;
     
     // Example: Request a lock
