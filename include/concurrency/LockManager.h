@@ -27,6 +27,14 @@ public:
     // Check if a transaction already holds a lock on a resource
     bool hasLock(uint32_t transaction_id, uint32_t resource_id) const;
     
+private:
+    std::map<uint32_t, std::set<std::shared_ptr<Lock>>> resource_locks_;
+
+    void abortTransaction(uint32_t txn_id);
+
+    // Wait-for graph for deadlock detection
+    WaitForGraph wait_for_graph_;
+
     // Get the lock type currently held on a resource (simplified)
     LockType getLockType(uint32_t resource_id) const;
     

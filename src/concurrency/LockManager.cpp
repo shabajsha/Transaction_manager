@@ -1,7 +1,8 @@
 #include "../../include/concurrency/LockManager.h"
 #include <iostream>
 
-// 🔥 FIX: initialize LogManager with file
+//   initialize LogManager with file
+//  FIX: initialize LogManager with file
 LockManager::LockManager()
     : log_manager_("log.txt") {}
 
@@ -21,7 +22,7 @@ void LockManager::abortTransaction(uint32_t txn_id) {
 
 bool LockManager::requestLock(uint32_t transaction_id, uint32_t resource_id, LockType lock_type) {
 
-    // 🔥 NEW: log transaction start
+    //  log transaction start
     log_manager_.logBegin(transaction_id);
 
     auto it = resource_locks_.find(resource_id);
