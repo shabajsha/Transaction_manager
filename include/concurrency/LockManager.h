@@ -11,6 +11,8 @@
 #include "Lock.h"
 #include "WaitForGraph.h"
 
+#include "../recovery/LogManager.h"
+
 class LockManager {
 public:
     LockManager();
@@ -30,15 +32,21 @@ public:
     
 private:
     std::map<uint32_t, std::set<std::shared_ptr<Lock>>> resource_locks_;
+
     void abortTransaction(uint32_t txn_id);
+
     // Wait-for graph for deadlock detection
     WaitForGraph wait_for_graph_;
+
     // resource_id -> set of locks held on that resource
     std::map<uint32_t, std::vector<std::shared_ptr<Lock>>> resource_locks_;
     // resource_id -> queue of (transaction_id, requested_lock_type)
     std::map<uint32_t, std::queue<std::pair<uint32_t, LockType>>> waiting_queue_;
     // Check compatibility between existing and requested lock
     bool isCompatible(LockType existing, LockType requested) const;
+
+
+    LogManager log_manager_;
 };
 
 #endif // LOCK_MANAGER_H

@@ -1,7 +1,9 @@
 #include "../../include/concurrency/LockManager.h"
 #include <iostream>
 
-LockManager::LockManager() {}
+// 🔥 FIX: initialize LogManager with file
+LockManager::LockManager()
+    : log_manager_("log.txt") {}
 
 LockManager::~LockManager() = default;
 
@@ -19,6 +21,9 @@ void LockManager::abortTransaction(uint32_t txn_id) {
 
 bool LockManager::requestLock(uint32_t transaction_id, uint32_t resource_id, LockType lock_type) {
 
+    // 🔥 NEW: log transaction start
+    log_manager_.logBegin(transaction_id);
+
     auto it = resource_locks_.find(resource_id);
 
     bool conflict = false;
@@ -29,10 +34,8 @@ bool LockManager::requestLock(uint32_t transaction_id, uint32_t resource_id, Loc
 
             uint32_t holder_txn = existing_lock->getTransactionId();
 
-            // Skip self
             if (holder_txn == transaction_id) continue;
 
-            // If conflict exists
             if (!isCompatible(existing_lock->getLockType(), lock_type)) {
 
                 conflict = true;
@@ -54,22 +57,31 @@ bool LockManager::requestLock(uint32_t transaction_id, uint32_t resource_id, Loc
             std::cout << "Deadlock detected! Aborting txn "
                       << transaction_id << std::endl;
 
-            // Remove all locks held by this txn
+            // 🔥 NEW: log abort
+            log_manager_.logAbort(transaction_id);
+
+            // Remove locks
             abortTransaction(transaction_id);
 
             // Remove from graph
             wait_for_graph_.removeTransaction(transaction_id);
         }
 
-        return false; // waiting or aborted
+        return false;
     }
+
+    // 🔥 NEW: simulate write (for WAL)
+    log_manager_.logUpdate(transaction_id, "old_val", "new_val");
 
     // Step 3: Grant lock
     auto new_lock = std::make_shared<Lock>(transaction_id, lock_type);
     resource_locks_[resource_id].insert(new_lock);
 
-    //  Remove any stale edges (txn is no longer waiting)
+    // Remove waiting edges
     wait_for_graph_.removeTransaction(transaction_id);
+
+    // 🔥 NEW: log commit
+    log_manager_.logCommit(transaction_id);
 
 
 LockManager::~LockManager() = default;
@@ -104,9 +116,10 @@ bool LockManager::releaseLock(uint32_t transaction_id, uint32_t resource_id) {
     if (it == resource_locks_.end()) {
         return false;
     }
+
     auto& locks = it->second;
     bool removed = false;
-    // Remove ALL locks of this transaction on this resource
+
     for (auto lock_it = locks.begin(); lock_it != locks.end(); ) {
         if ((*lock_it)->getTransactionId() == transaction_id) {
             lock_it = locks.erase(lock_it);
@@ -134,10 +147,11 @@ bool LockManager::releaseLock(uint32_t transaction_id, uint32_t resource_id) {
         }
         return true;
     }
-    //  Clean graph ONLY if something was removed
+
     if (removed) {
         wait_for_graph_.removeTransaction(transaction_id);
     }
+
     return removed;
 }
 
@@ -151,7 +165,6 @@ bool LockManager::hasLock(uint32_t transaction_id, uint32_t resource_id) const {
             }
         }
     }
-
     return false;
 }
 
@@ -175,7 +188,6 @@ LockType LockManager::getLockType(uint32_t resource_id) const {
 }
 
 bool LockManager::isCompatible(LockType existing, LockType requested) const {
-    // Only SHARED + SHARED is allowed
     if (existing == LockType::SHARED && requested == LockType::SHARED) {
         return true;
     }
