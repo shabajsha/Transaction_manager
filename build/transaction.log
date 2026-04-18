@@ -1,1 +1,3 @@
 Txn 1 | BEGIN
+Txn 1 | BEGIN
+Txn 1 | COMMIT

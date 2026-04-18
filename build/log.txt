@@ -1,3 +1,32 @@
 Txn 1 | BEGIN
 Txn 1 | UPDATE | old_val -> new_val
 Txn 1 | COMMIT
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 2 | BEGIN
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 2 | BEGIN
+Txn 2 | UPDATE | old_val -> new_val
+Txn 2 | COMMIT
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 2 | BEGIN
+Txn 2 | UPDATE | old_val -> new_val
+Txn 2 | COMMIT
+Txn 1 | BEGIN
+Txn 2 | BEGIN
+Txn 2 | ABORT
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 1 | BEGIN
+Txn 1 | UPDATE | old_val -> new_val
+Txn 1 | COMMIT
+Txn 2 | BEGIN
